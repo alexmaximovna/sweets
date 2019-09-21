@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Sweet</string>
     <string name="sweet_sweet">Sweet sweet!</string>
+    <string name="cake_zebra">Cake Zebra</string>
+    <string name="cake_honey">Cake Honey</string>
+    <string name="cake_peaches">Cake Peaches</string>
 </resources>
