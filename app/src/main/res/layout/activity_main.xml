@@ -28,6 +28,18 @@
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:text="@string/cake_honey"/>
+            <TextView
+                android:id="@+id/honey_like"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark" />
+            <TextView
+                android:id="@+id/honey_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark"/>
             <Button
                 android:id="@+id/honey_details"
                 android:layout_width="match_parent"
@@ -49,6 +61,18 @@
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:text="@string/cake_zebra"/>
+            <TextView
+                android:id="@+id/zebra_like"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark" />
+            <TextView
+                android:id="@+id/zebra_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark"/>
             <Button
                 android:id="@+id/zebra_details"
                 android:layout_width="match_parent"
@@ -69,6 +93,18 @@
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:text="@string/cake_peaches"/>
+            <TextView
+                android:id="@+id/peaches_like"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark" />
+            <TextView
+                android:id="@+id/peaches_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark"/>
             <Button
                 android:id="@+id/peaches_details"
                 android:layout_width="match_parent"

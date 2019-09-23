@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
@@ -18,5 +18,30 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
 
+    <TextView android:id="@+id/selection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26sp" />
 
-</FrameLayout>
+    <CheckBox android:id="@+id/like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Like"
+        android:textSize="26sp"
+        android:onClick="onCheckboxClicked"/>
+    <EditText
+        android:id="@+id/msg_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your comment"
+        />
+    <Button
+        android:id="@+id/sent_comment"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:onClick="onClick"
+        android:text="Sent" />
+
+
+</LinearLayout>
