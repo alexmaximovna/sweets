@@ -91,7 +91,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent2.putExtra("desc",t2.getText());
                 startActivity(intent2);
                 break;
+            case R.id.invite_friends:
 
+                Intent intent3 = new Intent(this,InviteActivity.class);
+                startActivity(intent3);
 
         }
     }
