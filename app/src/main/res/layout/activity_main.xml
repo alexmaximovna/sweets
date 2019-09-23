@@ -76,6 +76,13 @@
                 android:layout_gravity="center"
                 android:onClick="onClick"
                 android:text="Details" />
+            <Button
+                android:id="@+id/invite_friends"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:onClick="onClick"
+                android:text="Invite friend" />
 
         </LinearLayout>
     </ScrollView>
