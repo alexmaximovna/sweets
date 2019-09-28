@@ -18,6 +18,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.appbar.AppBarLayout;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
 
         Button button1 = findViewById(R.id.honey_details);
@@ -245,4 +249,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent2.putExtra("id_comment", R.id.peaches_comment);
         startActivityForResult(intent2, 0);
     }
+
+//    private void hideOption(int id) {
+//        MenuItem item = menu.findItem(id);
+//        item.setVisible(false);
+//    }
+//
+//    private void showOption(int id) {
+//        MenuItem item = menu.findItem(id);
+//        item.setVisible(true);
+//    }
 }
