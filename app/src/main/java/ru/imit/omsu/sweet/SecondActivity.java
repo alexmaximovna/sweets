@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
@@ -45,6 +46,8 @@ public class SecondActivity extends Activity implements View.OnClickListener {
             intent.putExtra("id_comment",id);
             intent.putExtra("comment", comment);
             setResult(0, intent);
+            Toast.makeText(SecondActivity.this, "Comment is adding.", Toast.LENGTH_SHORT).show();
+
             finish();
         }
     }
@@ -58,6 +61,7 @@ public class SecondActivity extends Activity implements View.OnClickListener {
         intent.putExtra("id_like",id);
         intent.putExtra("like",language.getText());
         setResult(0,intent);
+        Toast.makeText(SecondActivity.this, "You like it.", Toast.LENGTH_SHORT).show();
         finish();
     }
 

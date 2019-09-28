@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class AddSweetActivity extends Activity {
@@ -25,6 +26,8 @@ public class AddSweetActivity extends Activity {
                 intent.putExtra("dsc_sweet",textView.getText().toString());
                 intent.putExtra("name_sweet", textView1.getText().toString());
                 setResult(0, intent);
+                Toast.makeText(AddSweetActivity.this, "Sweet is adding.", Toast.LENGTH_SHORT).show();
+
                 finish();
         }
     }

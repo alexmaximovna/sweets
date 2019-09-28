@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,24 +13,28 @@
         android:id="@+id/des_cake"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
 
     <TextView android:id="@+id/selection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="26sp" />
+        android:layout_marginTop="240dp"
+        android:textSize="20sp" />
 
-    <CheckBox android:id="@+id/like"
+    <CheckBox
+        android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:onClick="onCheckboxClicked"
         android:text="Like"
-        android:textSize="26sp"
-        android:onClick="onCheckboxClicked"/>
+        android:textSize="26sp" />
+
     <EditText
         android:id="@+id/msg_comment"
+        android:layout_marginTop="350dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Your comment"
@@ -39,9 +43,9 @@
         android:id="@+id/sent_comment"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_gravity="center"
         android:onClick="onClick"
+        android:layout_gravity="bottom"
         android:text="Sent" />
 
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

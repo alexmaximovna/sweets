@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,7 +9,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:fillViewport="false"
         tools:ignore="MissingConstraints">
 
@@ -130,26 +128,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimaryDark"/>
-<!--            <TextView-->
-<!--                android:id="@+id/peaches_like"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textColor="@color/colorPrimaryDark" />-->
-<!--            <TextView-->
-<!--                android:id="@+id/peaches_comment"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textColor="@color/colorPrimaryDark"/>-->
-<!--            <Button-->
-<!--                android:id="@+id/peaches_details"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:onClick="onClick"-->
-<!--                android:text="Details" />-->
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
