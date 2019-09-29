@@ -22,5 +22,6 @@
     <string name="add_sweet">Add sweet</string>
     <string name="main_screen">Main screen</string>
     <string name="about_app">About app</string>
-    <string name="exit">exit</string>
+    <string name="exit">Exit</string>
+    <string name="menu_home">Home page</string>
 </resources>

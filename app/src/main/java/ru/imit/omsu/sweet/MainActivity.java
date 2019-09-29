@@ -1,15 +1,11 @@
 package ru.imit.omsu.sweet;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,17 +13,22 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.navigation.NavigationView;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity{
 
     private String like;
-    private Animation animRotate;
     private String comment;
     private String sweetName;
 
+    private AppBarConfiguration mAppBarConfiguration;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,30 +36,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_app, R.id.nav_exit)
+                .setDrawerLayout(drawer)
+                .build();
 
-
-        Button button1 = findViewById(R.id.honey_details);
-        Button button2 = findViewById(R.id.zebra_details);
-        Button button3 = findViewById(R.id.peaches_details);
-        ImageView imag = findViewById(R.id.honey);
-        ImageView imag1 = findViewById(R.id.zebra);
-        ImageView imag2 = findViewById(R.id.peaches);
-
-        imag.setClickable(true);
-        imag.setOnClickListener(this);
-        imag1.setClickable(true);
-        imag1.setOnClickListener(this);
-        imag2.setClickable(true);
-        imag2.setOnClickListener(this);
-        button1.setOnClickListener(this);
-        button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        animRotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
-
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
     }
 
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -86,6 +84,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 
 
     @Override
@@ -163,34 +165,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.honey:
-                view.startAnimation(animRotate);
-                animHoney();
-                break;
-            case R.id.zebra:
-                view.startAnimation(animRotate);
-                animZebra();
-                break;
-            case R.id.peaches:
-                view.startAnimation(animRotate);
-                animPeaches();
-                break;
-            case R.id.honey_details:
-                animHoney();
-                break;
-            case R.id.zebra_details:
-                animZebra();
-                break;
-            case R.id.peaches_details:
-                animPeaches();
-                break;
-
-        }
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -217,50 +191,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void animHoney() {
-        TextView t = findViewById(R.id.des_honey);
-        t.setTextColor(Color.rgb(255, 0, 0));
-        int drawId = this.getResources().getIdentifier("honey", "drawable", this.getPackageName());
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("pic", drawId);
-        intent.putExtra("desc", t.getText());
-        intent.putExtra("id_like", R.id.honey_like);
-        intent.putExtra("id_comment", R.id.honey_comment);
-        startActivityForResult(intent, 0);
 
-    }
-
-    private void animZebra() {
-        TextView t1 = findViewById(R.id.des_zebra);
-        t1.setTextColor(Color.rgb(255, 0, 0));
-        int drawId1 = this.getResources().getIdentifier("zebra", "drawable", this.getPackageName());
-        Intent intent1 = new Intent(this, SecondActivity.class);
-        intent1.putExtra("pic", drawId1);
-        intent1.putExtra("desc", t1.getText());
-        intent1.putExtra("id_like", R.id.zebra_like);
-        intent1.putExtra("id_comment", R.id.zebra_comment);
-        startActivityForResult(intent1, 0);
-    }
-
-    private void animPeaches() {
-        TextView t2 = findViewById(R.id.des_peaches);
-        t2.setTextColor(Color.rgb(255, 0, 0));
-        int drawId2 = this.getResources().getIdentifier("peaches", "drawable", this.getPackageName());
-        Intent intent2 = new Intent(this, SecondActivity.class);
-        intent2.putExtra("pic", drawId2);
-        intent2.putExtra("desc", t2.getText());
-        intent2.putExtra("id_like", R.id.peaches_like);
-        intent2.putExtra("id_comment", R.id.peaches_comment);
-        startActivityForResult(intent2, 0);
-    }
-
-//    private void hideOption(int id) {
-//        MenuItem item = menu.findItem(id);
-//        item.setVisible(false);
-//    }
-//
-//    private void showOption(int id) {
-//        MenuItem item = menu.findItem(id);
-//        item.setVisible(true);
-//    }
 }

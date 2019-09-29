@@ -8,10 +8,10 @@
             android:id="@+id/nav_home"
             android:title="@string/main_screen" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_app"
             android:title="@string/about_app" />
         <item
-            android:id="@+id/exit"
+            android:id="@+id/nav_exit"
             android:title="@string/exit" />
     </group>
 </menu>
