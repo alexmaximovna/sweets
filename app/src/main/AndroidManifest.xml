@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity" />
-        <activity android:name=".InviteActivity" />
+        <activity android:theme="@style/MyTheme" android:name=".InviteActivity" />
         <activity android:name=".AddSweetActivity" />
 
     </application>

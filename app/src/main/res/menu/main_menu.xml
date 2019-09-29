@@ -6,9 +6,9 @@
     <item
         android:id="@+id/invite_friends"
         android:orderInCategory="1"
-        android:title="Invite friend" />
+        android:title="@string/invite_friend" />
     <item
         android:id="@+id/add_sweets"
         android:orderInCategory="1"
-        android:title="Add sweet" />
+        android:title="@string/add_sweet" />
 </menu>

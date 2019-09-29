@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="content_margin">80dp</dimen>
+    <dimen name="image_margin">200dp</dimen>
+    <dimen name="nav_margin">170dp</dimen>
+    <dimen name="selection_margin">240dp</dimen>
+    <dimen name="margin_top_text">30dp</dimen>
+    <dimen name="text_size">20sp</dimen>
+    <dimen name="text_size1">16sp</dimen>
+    <dimen name="margin_checkbox">300dp</dimen>
+    <dimen name="margin_button">50dp</dimen>
+    <dimen name="margin_button_bottom">10dp</dimen>
+    <dimen name="margin_button_height">100dp</dimen>
+    <dimen name="margin_top_details">250dp</dimen>
+</resources>

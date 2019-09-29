@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/cake"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/image_margin"
+        android:layout_height="100dp"
         android:background="@color/colorWhite"
         android:contentDescription="@string/picture_of_cake" />
 
@@ -15,13 +15,13 @@
         android:id="@+id/des_cake"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top_details"
+        android:layout_marginTop="100dp"
         style="@style/NameObject" />
 
     <TextView android:id="@+id/selection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/selection_margin"
+        android:layout_marginTop="110dp"
         android:textSize="@dimen/text_size"
         tools:ignore="SpUsage" />
 
@@ -29,7 +29,7 @@
         android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_checkbox"
+        android:layout_marginTop="130dp"
         android:onClick="onCheckboxClicked"
         android:text="@string/like"
         android:textSize="@dimen/text_size"
@@ -37,7 +37,7 @@
 
     <EditText
         android:id="@+id/msg_comment"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="150dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/your_comment"

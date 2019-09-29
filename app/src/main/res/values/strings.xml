@@ -1,7 +1,25 @@
 <resources>
-    <string name="app_name">Sweet</string>
+    <string name="app_name" >Sweet</string>
     <string name="sweet_sweet">Sweet sweet!</string>
     <string name="cake_zebra">Cake Zebra</string>
     <string name="cake_honey">Cake Honey</string>
     <string name="cake_peaches">Cake Peaches</string>
+    <string name="picture_of_cake_honey">Picture of cake honey</string>
+    <string name="details">Details</string>
+    <string name="picture_of_cake_zebra">Picture of cake zebra</string>
+    <string name="picture_of_new_sweet">Picture of new sweet</string>
+    <string name="your_name_sweet">Your name sweet</string>
+    <string name="your_description_sweet">Your description sweet</string>
+    <string name="add">Add</string>
+    <string name="your_message">Your message</string>
+    <string name="email">Email</string>
+    <string name="like">Like</string>
+    <string name="your_comment">Your comment</string>
+    <string name="send">Send</string>
+    <string name="picture_of_cake">picture of cake</string>
+    <string name="hello_user">Hello user</string>
+    <string name="invite_friend">Invite friend</string>
+    <string name="add_sweet">Add sweet</string>
+    <string name="main_screen">Main screen</string>
+    <string name="about_app">About app</string>
 </resources>

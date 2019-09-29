@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -17,16 +19,38 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+
+    <style name="MyTheme" parent="android:Theme.Light">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+
+    </style>
+
+
     <style name="Toolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
-        <!-- <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item> -->
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="RoundedCornerButton" parent="@style/Widget.AppCompat.Button.Colored">
-        <item name="background">@drawable/btn_rounded_corner</item>
-        <item name="colorButtonNormal">#1a237e</item>
-        <item name="colorControlHighlight">#673ab7</item>
+    <style name="NameObject">
+        <item name="android:textSize">@dimen/text_size1</item>
+        <item name="android:textColor">@color/colorName</item>
+        <item name="android:typeface">monospace</item>
+
     </style>
+
+    <style name="MyButton">
+        <item name="android:layout_height">@dimen/margin_button</item>
+        <item name="android:textColor">@color/colorName</item>
+        <item name="android:layout_marginBottom">@dimen/margin_button_bottom</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="MyButton1">
+        <item name="android:layout_height">@dimen/margin_button_height</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+
 </resources>
