@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Animation animRotate;
     private String comment;
     private String sweetName;
-    //private AppBarConfiguration mAppBarConfiguration;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +77,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.add_sweets:
                 Intent intent4 = new Intent(this, AddSweetActivity.class);
                 startActivityForResult(intent4,0);
+                return true;
+            case R.id.image:
+                Intent intent5 = new Intent(this, VectorImageActivity.class);
+                startActivityForResult(intent5,0);
                 return true;
 
         }

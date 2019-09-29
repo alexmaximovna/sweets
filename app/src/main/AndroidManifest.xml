@@ -22,6 +22,7 @@
         <activity android:name=".SecondActivity" />
         <activity android:theme="@style/MyTheme" android:name=".InviteActivity" />
         <activity android:name=".AddSweetActivity" />
+        <activity android:name=".VectorImageActivity" />
 
     </application>
 
