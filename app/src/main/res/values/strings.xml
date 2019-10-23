@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name" >Sweet</string>
+    <string name="Open">NavBar</string>
+    <string name="Close">NavBar</string>
+
     <string name="sweet_sweet">Sweet sweet!</string>
     <string name="cake_zebra">Cake Zebra</string>
     <string name="cake_honey">Cake Honey</string>
@@ -24,4 +27,5 @@
     <string name="about_app">About app</string>
     <string name="exit">Exit</string>
     <string name="menu_home">Home page</string>
+    <string name="picture_of_vector">picture_of_vector</string>
 </resources>

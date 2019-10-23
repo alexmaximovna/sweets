@@ -46,11 +46,5 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main"
-        android:layout_marginTop="@dimen/content_margin"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

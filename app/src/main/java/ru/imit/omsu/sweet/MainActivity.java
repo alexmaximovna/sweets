@@ -1,62 +1,117 @@
 package ru.imit.omsu.sweet;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
+import ru.imit.omsu.sweet.fragments.AddFragment;
+import ru.imit.omsu.sweet.fragments.DetailsFragment;
+import ru.imit.omsu.sweet.fragments.InviteFragment;
+import ru.imit.omsu.sweet.fragments.VectorImageFragment;
+import ru.imit.omsu.sweet.fragments.HomeFragment;
 
-public class MainActivity extends AppCompatActivity{
 
-    private String like;
-    private String comment;
-    private String sweetName;
+public class MainActivity extends AppCompatActivity implements
+        AddFragment.Listener, DetailsFragment.Listener {
 
-    private AppBarConfiguration mAppBarConfiguration;
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
+    private InviteFragment inviteFragment;
+    private AddFragment addFragment;
+    private VectorImageFragment vectorImageFragment;
+    private HomeFragment homeFragment;
+    private FragmentManager fTrans;
+    private FragmentTransaction fragmentTransaction;
+
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        inviteFragment = new InviteFragment();
+        addFragment = new AddFragment();
+        vectorImageFragment = new VectorImageFragment();
+        homeFragment = new HomeFragment();
+        fTrans = this.getSupportFragmentManager();
+        fragmentTransaction = fTrans.beginTransaction();
         setContentView(R.layout.activity_main);
+        fragmentTransaction.add(R.id.frame_container, homeFragment);
+        fragmentTransaction.commit();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        dl = findViewById(R.id.drawer_layout);
+        t = new ActionBarDrawerToggle(this, dl, R.string.Open, R.string.Close);
+        dl.addDrawerListener(t);
+        t.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        nv = findViewById(R.id.nv);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                fragmentTransaction = fTrans.beginTransaction();
+                switch(id)
+                {
+                    case R.id.nav_home:
+                        fragmentTransaction.replace(R.id.frame_container,homeFragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                        Toast.makeText(MainActivity.this, "My HomeScreen",Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.nav_app:
+                        Toast.makeText(MainActivity.this, "This app is created for fans of sweet"+
+                                "You can show,make publications,share with friends your emotions about something sweet," +
+                                "stay comments,like pictures  and etc ..",Toast.LENGTH_SHORT).show();
+                        return true;
 
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_app, R.id.nav_exit)
-                .setDrawerLayout(drawer)
-                .build();
+                    case R.id.nav_exit:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setMessage("Are you sure you want to exit?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        MainActivity.this.finish();
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                        return true;
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+                    default:
+                        return true;
+                }
 
+            }
+        });
     }
 
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,129 +122,66 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        fragmentTransaction = fTrans.beginTransaction();
         switch (id) {
             case R.id.invite_friends:
-                Intent intent3 = new Intent(this, InviteActivity.class);
-                startActivity(intent3);
+                fragmentTransaction.replace(R.id.frame_container, inviteFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
                 return true;
             case R.id.add_sweets:
-                Intent intent4 = new Intent(this, AddSweetActivity.class);
-                startActivityForResult(intent4,0);
+                fragmentTransaction.hide(homeFragment);
+                fragmentTransaction.add(R.id.frame_container, addFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
                 return true;
+
             case R.id.image:
-                Intent intent5 = new Intent(this, VectorImageActivity.class);
-                startActivityForResult(intent5,0);
+                fragmentTransaction.replace(R.id.frame_container, vectorImageFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
                 return true;
 
         }
+
         return super.onOptionsItemSelected(item);
     }
 
 
 
 
-
-
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        TextView t = findViewById(R.id.des_honey);
-        TextView t1 = findViewById(R.id.des_zebra);
-        TextView t2 = findViewById(R.id.des_peaches);
-        TextView t3 = findViewById(R.id.honey_like);
-        TextView t4 = findViewById(R.id.honey_comment);
-        TextView t5 = findViewById(R.id.zebra_like);
-        TextView t6 = findViewById(R.id.zebra_comment);
-        TextView t7 = findViewById(R.id.peaches_like);
-        TextView t8 = findViewById(R.id.peaches_comment);
-        TextView t9 = findViewById(R.id.name_example);
-        ImageView im = findViewById(R.id.example);
-        if(im!=null){
-          outState.putString("example", String.valueOf(this.getResources().getIdentifier("example", "drawable", this.getPackageName())));
-        }
-        outState.putString("honey", String.valueOf(t.getCurrentTextColor()));
-        outState.putString("zebra", String.valueOf(t1.getCurrentTextColor()));
-        outState.putString("peaches", String.valueOf(t2.getCurrentTextColor()));
-        outState.putString("name_example", String.valueOf(t9.getText()));
-        outState.putString("honey_like", String.valueOf(t3.getText()));
-        outState.putString("honey_comment", String.valueOf(t4.getText()));
-        outState.putString("zebra_like", String.valueOf(t5.getText()));
-        outState.putString("zebra_comment", String.valueOf(t6.getText()));
-        outState.putString("peaches_like", String.valueOf(t7.getText()));
-        outState.putString("peaches_comment", String.valueOf(t8.getText()));
+    public void setData(String data, String data1) {
+        homeFragment.setAttributes(data,data1);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.show(homeFragment);
+                transaction.hide(addFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+    }
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-            super.onRestoreInstanceState(savedInstanceState);
-        String str = savedInstanceState.getString("honey");
-        String str1 = savedInstanceState.getString("zebra");
-        String str2 = savedInstanceState.getString("peaches");
-        String str3 = savedInstanceState.getString("honey_like");
-        String str4 = savedInstanceState.getString("honey_comment");
-        String str5 = savedInstanceState.getString("zebra_like");
-        String str6 = savedInstanceState.getString("zebra_comment");
-        String str7 = savedInstanceState.getString("peaches_like");
-        String str8 = savedInstanceState.getString("peaches_comment");
-        String str9 = savedInstanceState.getString("name_example");
-        String str10 = savedInstanceState.getString("example");
-        if(str10 != null){
-            ImageView im = findViewById(R.id.example);
-            im.setImageDrawable(this.getDrawable(Integer.parseInt(str10)));
-        }
-
-
-
-        TextView  t = findViewById(R.id.des_honey);
-        TextView  t1 = findViewById(R.id.des_zebra);
-        TextView  t2 = findViewById(R.id.des_peaches);
-        TextView t3 = findViewById(R.id.honey_like);
-        TextView t4 = findViewById(R.id.honey_comment);
-        TextView t5 = findViewById(R.id.zebra_like);
-        TextView t6 = findViewById(R.id.zebra_comment);
-        TextView t7 = findViewById(R.id.peaches_like);
-        TextView t8 = findViewById(R.id.peaches_comment);
-        TextView t9 = findViewById(R.id.name_example);
-
-        t.setTextColor(Integer.parseInt(str));
-        t1.setTextColor(Integer.parseInt(str1));
-        t2.setTextColor(Integer.parseInt(str2));
-        t3.setText(str3);
-        t4.setText(str4);
-        t5.setText(str5);
-        t6.setText(str6);
-        t7.setText(str7);
-        t8.setText(str8);
-        t9.setText(str9);
-
+    public void setDat(String data, String data1) {
+        homeFragment.setAtt(data,data1);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.show(homeFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(data != null){
-            sweetName = data.getStringExtra("name_sweet");
-            like = data.getStringExtra("like");
-
-            if(sweetName != null){
-                TextView t9= findViewById(R.id.name_example);
-                t9.setText(sweetName);
-                ImageView imageView =findViewById(R.id.example);
-                int id = this.getResources().getIdentifier("example", "drawable", this.getPackageName());
-                imageView.setImageDrawable(this.getDrawable(id));
-            }
-            if(like!= null){
-                TextView t8 = findViewById(data.getIntExtra("id_like",0));
-                t8.setText(like); }
-
-            comment = data.getStringExtra("comment");
-            if(comment !=null){
-            TextView t7 = findViewById(data.getIntExtra("id_comment",0));
-            t7.setText(comment); }
-        }
+    public void setDataLike(String data, String data1) {
+        homeFragment.setAttLike(data,data1);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.show(homeFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
-
-
 }
+
+
+

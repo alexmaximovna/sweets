@@ -9,19 +9,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:configChanges="orientation|screenSize|keyboardHidden"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".SecondActivity" />
-        <activity android:theme="@style/MyTheme" android:name=".InviteActivity" />
-        <activity android:name=".AddSweetActivity" />
-        <activity android:name=".VectorImageActivity" />
+        <activity android:theme="@style/MyTheme" android:name=".activity.InviteActivity" />
+        <activity android:name=".activity.AddSweetActivity" />
+        <activity android:name=".activity.VectorImageActivity" />
 
     </application>
 

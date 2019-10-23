@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/second">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
     <ImageView
         android:id="@+id/cake"
         android:layout_width="match_parent"
@@ -15,13 +21,13 @@
         android:id="@+id/des_cake"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top_details"
+
         style="@style/NameObject" />
 
     <TextView android:id="@+id/selection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/selection_margin"
+
         android:textSize="@dimen/text_size"
         tools:ignore="SpUsage" />
 
@@ -29,19 +35,16 @@
         android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_checkbox"
-        android:onClick="onCheckboxClicked"
+        android:onClick="onClick"
         android:text="@string/like"
         android:textSize="@dimen/text_size"
         tools:ignore="SpUsage" />
 
     <EditText
         android:id="@+id/msg_comment"
-        android:layout_marginTop="350dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/your_comment"
-        />
+        android:hint="@string/your_comment" />
     <Button
         android:id="@+id/sent_comment"
         android:layout_width="match_parent"
@@ -49,5 +52,5 @@
         android:onClick="onClick"
         android:text="@string/send" />
 
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

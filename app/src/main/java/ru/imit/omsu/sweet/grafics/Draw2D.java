@@ -1,4 +1,4 @@
-package ru.imit.omsu.sweet;
+package ru.imit.omsu.sweet.grafics;
 
 import android.content.Context;
 import android.graphics.Canvas;
